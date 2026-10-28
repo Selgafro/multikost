@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Multikost — We trend the impossible</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f7f9fc;--bg2:#e8eff9;--ink:#0b0d12;--mute:#4a5160;--line:#d5dded;--blue:#14305e;--blue2:#1d4a8f;--card:#fff}
+:root[data-theme="dark"]{--bg:#0a0c10;--bg2:#12161d;--ink:#f3f5f8;--mute:#a3abb9;--line:#262c37;--blue:#5b8fdc;--blue2:#7aa6ea;--card:#12161d}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}button{font:inherit;cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:20px;text-decoration:none}.logo b{color:var(--blue)}
+nav{display:flex;gap:4px;align-items:center}nav a{text-decoration:none;font-size:14px;padding:8px 12px;border-radius:8px;color:var(--mute)}nav a:hover{color:var(--ink);background:var(--bg2)}
+.ib{border:1px solid var(--line);background:none;color:var(--ink);border-radius:8px;width:36px;height:36px;margin-left:4px}
+.btn{display:inline-block;background:var(--blue);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-weight:600;text-decoration:none}.btn:hover{background:var(--blue2)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}.btn.ghost:hover{background:var(--bg2)}
+.hero{padding:72px 20px;display:grid;gap:40px;grid-template-columns:1.1fr .9fr;align-items:center}
+.hw{position:relative}
+.art{width:100%;height:auto;display:block;border-radius:18px}
+.fb{position:absolute;background:#fff;color:#0b0d12;border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600;box-shadow:0 6px 18px rgba(20,48,94,.12);animation:fl 4s ease-in-out infinite}
+.f1{top:4%;right:2%}.f2{bottom:14%;left:0;animation-delay:-1.3s}.f3{top:46%;left:-2%;animation-delay:-2.6s}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.tag{display:inline-block;font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:4px 14px;margin-bottom:20px}
+h1{font-size:clamp(36px,6.6vw,64px);line-height:1.06;letter-spacing:-.035em;margin:0 0 20px}h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:18px;color:var(--mute);max-width:560px;margin:0 0 30px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:72px 0}section.alt{background:var(--bg2)}
+h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0 0 10px}
+.sub{color:var(--mute);margin:0 0 32px;max-width:600px}
+.tick{overflow:hidden;border-block:1px solid var(--line);background:var(--card);padding:12px 0}
+.tk{display:flex;gap:36px;width:max-content;animation:mq 30s linear infinite;color:var(--mute);font-weight:600;font-size:14px}
+.tk span::before{content:"◆ ";color:var(--blue);font-size:10px}@keyframes mq{to{transform:translateX(-50%)}}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:left;width:100%;color:inherit;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:var(--blue)}
+.tile{height:96px;border-radius:10px;display:grid;place-items:center;margin-bottom:6px}
+.tile svg,.ico{width:44px;height:44px;stroke:#14305e;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card h3{margin:12px 0 4px;font-size:18px}.card p{margin:0;color:var(--mute);font-size:15px}
+.hint{display:block;margin-top:12px;font-size:13px;color:var(--blue);font-weight:600}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 16px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.detail{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:24px;grid-template-columns:200px 1fr;animation:fi .35s}
+.detail .tile{height:100%;min-height:160px}.detail .tile svg{width:72px;height:72px}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}}
+.ck{list-style:none;padding:0;margin:14px 0;display:grid;gap:6px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.ck li::before{content:"✓ ";color:var(--blue);font-weight:800}
+.mini{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tl{margin:10px 0;padding:0;list-style:none;counter-reset:t}.tl li{counter-increment:t;padding:6px 0 6px 34px;position:relative}
+.tl li::before{content:counter(t);position:absolute;left:0;top:5px;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
+.band{padding:24px 0}.band .art{height:200px}.band p{margin:16px 0 0;color:var(--mute);max-width:700px;font-size:18px}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.why{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.why svg{width:30px;height:30px;stroke:var(--blue);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.why h3{margin:10px 0 4px;font-size:17px}.why p{margin:0;color:var(--mute);font-size:15px}
+.till{display:grid;gap:18px;grid-template-columns:1fr 1fr}
+.items{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}.items button{border:1px solid var(--line);background:var(--bg2);color:var(--ink);border-radius:10px;padding:10px 14px}
+.sw{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:600}
+.sw button{width:48px;height:26px;border-radius:99px;border:0;background:#9aa4b5;position:relative}
+.sw button::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s}
+.sw button.on{background:var(--blue)}.sw button.on::after{left:25px}
+.lg{margin:12px 0 0;padding:0;list-style:none;font-size:14px;max-height:170px;overflow:auto}
+.lg li{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line)}.st1{color:#a15c00}.st2{color:#1f7a3d}
+.steps{counter-reset:s;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.step{border-top:2px solid var(--blue);padding-top:14px}.step::before{counter-increment:s;content:"0" counter(s);font-weight:800;color:var(--blue)}
+.step h3{margin:4px 0;font-size:17px}.step p{margin:0;color:var(--mute);font-size:15px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600}.faq p{margin:10px 0 0;color:var(--mute)}
+.sbox{background:#14305e;color:#fff;border-radius:18px;padding:36px 26px}
+.sbox h2,.sbox p{color:#fff}.sbox p{opacity:.85;margin:0 0 20px}
+.sbox form{display:flex;gap:10px;flex-wrap:wrap}
+.sbox input{flex:1 1 220px;padding:13px 14px;border-radius:10px;border:2px solid transparent;font:inherit;background:#fff;color:#0b0d12}
+.sbox input:focus{outline:none;border-color:#9fc0f5}
+.sbox button{background:#0b0d12;color:#fff;border:0;border-radius:10px;padding:13px 22px;font-weight:600}
+.msg{min-height:24px;margin-top:10px;font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:14px}
+.prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;background:var(--blue);z-index:50}
+.top{position:fixed;right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;text-decoration:none;z-index:40}
+.net{position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);background:#0b0d12;color:#fff;font-size:13px;padding:8px 12px;border-radius:8px;z-index:40}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}.rv.in{opacity:1;transform:none}
+@media (max-width:760px){.hero,.till{grid-template-columns:1fr}.hero{padding-top:44px}}
+@media (max-width:640px){.detail{grid-template-columns:1fr}.detail .tile{min-height:110px}section{padding:56px 0}nav a.hide{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+
+header{background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+h1{font-size:clamp(40px,7.4vw,76px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;line-height:1.2}.chip,.items button{min-height:44px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.hc{padding:9px 16px;font-size:14px;min-height:40px}
+.herow{background:linear-gradient(135deg,#eef3fb 0%,var(--bg) 55%,#e3ecfa 100%)}
+.rich .herow{background:linear-gradient(120deg,#e8f0fc,#f7f9fc,#dbe7fa,#f2f6fc);background-size:300% 300%;animation:mesh 16s ease-in-out infinite alternate}
+:root[data-theme="dark"] .herow{background:linear-gradient(135deg,#0d1422,#0a0c10);animation:none}
+@keyframes mesh{to{background-position:100% 50%}}
+.rich .hw>.art,.rich .hw>.pic{transform:translateY(calc(var(--sy,0px)*-.04));will-change:transform}
+html.jf body,html.jf h1,html.jf h2,html.jf h3,html.jf button,html.jf input,html.jf select,html.jf textarea{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.pic{position:relative;width:100%;height:100%;display:grid;place-items:center;border-radius:inherit;overflow:hidden}
+.pic img,.hw video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;border-radius:inherit}
+.pic img.on{opacity:1}.hw video{position:static;opacity:1;aspect-ratio:480/330;border-radius:18px}
+.herow .pic{border-radius:18px}
+.micro{margin:14px 0 0;font-size:14px;color:var(--mute)}
+.urg{display:inline-block;background:#fff4d6;color:#6a4a00;border-radius:99px;padding:4px 14px;font-size:14px;font-weight:600;margin:0 0 16px}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.bd{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 14px;font-size:14px;font-weight:600}
+.proof{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:18px}
+.pf{display:flex;flex-direction:column}.num{font-size:34px;letter-spacing:-.02em;color:var(--blue)}.num.ph{opacity:.4}.pf span{color:var(--mute);font-size:14px}
+.logos{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.lgo{border:1.5px dashed var(--line);border-radius:12px;height:64px;display:grid;place-items:center;color:var(--mute);font-size:13px}
+.trust{padding:40px 0}
+.quote{max-width:760px}.quote p{font-size:clamp(20px,3vw,28px);line-height:1.35;margin:0 0 12px}.quote span{color:var(--mute)}
+section.cta{padding:8px 0}
+.ctar{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:28px 20px}
+.ctar p{margin:0;font-size:20px;font-weight:700;letter-spacing:-.01em;max-width:560px}
+.hq{display:grid;gap:14px}.hq .chips{margin:0}
+.rbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 26px;box-shadow:0 20px 50px rgba(20,48,94,.08)}
+.rf{display:grid;gap:14px;grid-template-columns:1fr 1fr}.rf label{display:grid;gap:6px;font-size:14px;font-weight:600}.rf .full{grid-column:1/-1}
+.rf input,.rf select,.rf textarea{font:inherit;padding:12px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px}
+.foot{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}.foot a{text-decoration:underline}
+.mb{display:none}
+.mode{position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + var(--bb,12px));z-index:35;background:var(--card);border:1px solid var(--line);color:var(--mute);font-size:12px;border-radius:99px;padding:5px 12px;display:flex;gap:8px;align-items:center}
+.mode button{background:var(--blue);color:#fff;border:0;border-radius:99px;padding:3px 10px;font-size:12px}
+@media (max-width:760px){.rf{grid-template-columns:1fr}.hc{display:none}body{padding-bottom:72px}:root{--bb:84px}
+.mb{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(env(safe-area-inset-bottom,0px) + 10px);background:var(--bg);border-top:1px solid var(--line);z-index:45}.mb .btn{flex:1}
+.top{bottom:calc(env(safe-area-inset-bottom,0px) + 84px)}.net{bottom:calc(env(safe-area-inset-bottom,0px) + 120px)}}
+@media (prefers-reduced-motion:reduce){.hw>.art,.hw>.pic{transform:none!important}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+(function(){
+var h=React.createElement,useState=React.useState,useEffect=React.useEffect,useRef=React.useRef;
+/* ===== CONFIG: edit here ===== */
+var CFG={
+HOSTED:false, // true on your own hosting: enables remote photos and video. Preview keeps it false.
+cta:{en:"Get a free consultation",fr:"Obtenez une consultation gratuite"}, // primary action
+wa:"243861659483",waDisplay:"+243 86 165 9483",email:"info@multikost.com",
+endpoint:"",   // request form POST URL (optional). Empty = opens the visitor's email app
+subscribe:"",  // subscribe POST URL (optional)
+urgency:{on:false}, // true shows the "limited slots" line (confirm it is true first)
+photos:{hero:"REPLACE WITH MY IMAGE URL",svc:{it:"REPLACE WITH MY IMAGE URL",tr:"REPLACE WITH MY IMAGE URL",dev:"REPLACE WITH MY IMAGE URL",mk:"REPLACE WITH MY IMAGE URL",st:"REPLACE WITH MY IMAGE URL"}},
+data:{hero:"",svc:{it:"",tr:"",dev:"",mk:"",st:""}}, // compressed data: URIs (30-50 KB) work in preview and hosted
+video:"REPLACE WITH MY VIDEO URL", // muted looping hero video, hosted + rich only
+fonts:"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap",
+net:{minDownlink:1.5,maxRtt:600,slowLoadMs:4000}, // below/above these = lean
+proof:[{n:null,plus:true},{n:null,plus:true},{n:null,plus:true}] // put REAL numbers here: projects, people trained, organisations
+};
+
+/* Language: browser language first, then timezone as a location hint. English by default. */
+function detect(){try{var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"en"];
+if(/^fr/i.test(ls[0]))return"fr";if(/^en/i.test(ls[0]))return"en";
+var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");
+if(/^(Europe\/(Paris|Brussels|Luxembourg|Monaco)|America\/(Montreal|Toronto)|Africa\/(Kinshasa|Lubumbashi|Abidjan|Dakar|Douala|Libreville|Brazzaville|Bamako|Ouagadougou|Niamey|Conakry|Lome|Porto-Novo|Bangui|Ndjamena|Algiers|Tunis|Casablanca|Bujumbura|Kigali)|Indian\/Antananarivo)$/.test(tz)&&ls.some(function(l){return/^fr/i.test(l)}))return"fr"}catch(e){}return"en"}
+var L=detect();document.documentElement.lang=L;
+var EN={title:"Multikost — We trend the impossible",nav:["Services","Try it","FAQ","Subscribe"],theme:"Switch light or dark theme",top:"Back to top",off:"You’re offline. This page still works.",
+tag:"IT solutions for NGOs, businesses and schools",h1:["We trend the ","impossible","."],lead:"IT support, training, custom apps, marketing and hardware, built to work wherever you are, even on a weak connection.",b1:"Explore services",b2:"Try a demo",fb:["Works offline","Built for impact","5 services"],
+tick:["Word","Excel","PowerPoint","Android apps","Web apps","Databases","Wi-Fi","Solar & UPS","Social media","Laptops","Printers","Training"],
+sv:{h:"What we do",all:"All services",s1:"Five services under one roof. Tap one to focus on it.",s2:"Focused on one service. Switch with the buttons or go back to see everything.",open:"Open this service ▸",ex:"How a project usually goes",next:"Next: ",back:"← All services",upd:"Get updates",chip:"Choose a service"},
+S:{it:{tag:"Fix",t:"IT Support & Infrastructure",d:"We keep your computers, network and power backup running so work never stops.",l:["Network and Wi-Fi setup","Repairs and maintenance plans","Backups that work without internet","Solar and UPS power advice"],s:["Site visit and equipment inventory","Fix, secure and label everything","Regular check-ups so problems stay small"]},
+tr:{tag:"Learn",t:"Computer Training & Courses",d:"Practical lessons for staff, students and beginners, in a language you follow.",l:["Office tools: Word, Excel, PowerPoint","Basic computing for beginners","Team training for schools and NGOs","Certificates on completion"],s:["Find out what your people already know","Hands-on sessions using real tasks","Practice test, then a certificate"]},
+dev:{tag:"Build",t:"Custom App Development",d:"Database, mobile, web and desktop apps built around how you really work, and made to run offline.",l:["Database systems","Android and web apps","Desktop software","Offline-first, syncs when online"],s:["Map how your team works today","Prototype fast and test with your staff","Launch, train everyone and keep supporting"]},
+mk:{tag:"Grow",t:"Digital Marketing & Growth",d:"Get found by the people you want to reach with simple, honest online marketing.",l:["Social media pages and content","Posters and brand identity","Business pages and listings","Light-data campaigns"],s:["Decide who you want to reach","Create pages, posters and content","Review what worked, improve monthly"]},
+st:{tag:"Buy",t:"Computer & Accessories Store",d:"Reliable computers and accessories, with advice on what you actually need.",l:["Laptops and desktops","Printers, cables and storage","Routers and networking gear","Warranty and after-sale support"],s:["Tell us your budget and purpose","We recommend options you can compare","Delivery, setup and warranty support"]}},
+band:"Our mission is to empower NGOs, businesses, schools and more with advanced tools that improve their daily work. They are why we build technology that survives real conditions.",bandA:"Illustration of a school, shop and office by the water",
+why:{h:"Why Multikost",s:"Four habits that keep every tool we build useful in the daily work of the people who rely on it.",i:[["Offline-first","Apps keep working when the network drops and sync later."],["Light on data","Small pages and small updates, kind to slow connections."],["Personal support","Real people who answer, visit and train, not a ticket queue."],["Built to last","Simple designs your own team can understand and maintain."]]},
+till:{h:"Try an offline-first till",s:"See how our apps behave when the network drops. Switch it off, make a few sales, then switch it back on. (Demo prices.)",on:"Network: online",offl:"Network: offline",items:["Bread","Tea","Cake"],tot:"Total: ",wait:" waiting to sync",ok:"Everything is saved",clr:"Clear",log:"Sales log",none:"No sales yet. Tap an item.",sy:"Synced ✓",dev:"Saved on device…",tg:"Toggle network"},
+how:{h:"How we work",s:"Simple and honest, from the first conversation to long after launch.",st:[["Listen","We start with your daily challenge, not our product list."],["Propose","A clear plan and price you can read on one page."],["Build or fix","Done step by step, tested in your real environment."],["Stay with you","Training and follow-up, long after launch."]]},
+faq:{h:"Questions people ask",q:[["Do your apps work without internet?","Yes. We design them offline-first, so daily work continues and data syncs when a connection is available."],["Can you train people who have never used a computer?","Yes. We start from the basics and practise on tasks people actually do at work."],["We have a small budget. Can we still work with you?","Yes. We usually propose a small first step, then grow it as your needs and resources grow."],["Do you work with organisations in other countries?","That is where we are heading. Apps, training and marketing can be delivered remotely, so get in touch."]]},
+sub:{h:"Stay in the loop",p:"New tools, courses and offers, straight to your inbox. No spam, unsubscribe any time.",ph:"you@example.com",lbl:"Email address",b:"Subscribe",bad:"That email doesn’t look right. Please check it.",ok:"Thank you! You’re on the list. We’ll write only when we have something useful.",send:"Sending…"},
+N:{reqSvc:"Request this service",mid1:"Ready to fix, learn or build? Tell us your challenge.",mid2:"Ready to start? Tell us what you need.",micro:"Tell us your challenge. Get a clear plan within 48 hours.",alt:"The Multikost team at work",
+badges:["Free first consultation","Works offline","Training included"],trustH:"Trusted by teams like yours",proofL:["Projects delivered","People trained","Organisations supported"],logo:"[client logo]",quote:"[testimonial]",quoteBy:"[name, organisation]",
+help:{h:"Not sure where to start?",q:["What slows you down most?","Who are you?","How soon do you need help?"],o:[["Broken or unreliable equipment","My team needs computer skills","We need a custom system or app","Not enough people know about us","I need to buy equipment"],["An NGO","A business","A school","Something else"],["Right away","In the next months","Just exploring"]],res:"We suggest: ",re:"Start over",step:"Question "},
+req:{h:"Tell us what you need",p:"We reply with a clear plan. No obligation.",n:"Your name",e:"Your email",o:"Organisation type",org:["NGO","Business","School","Other"],s:"Service",ns:"Not sure yet",m:"Your challenge (optional)",send:"Send my request",bad:"Please enter your name and a valid email.",done:"Opening your email app. You can also message us on WhatsApp.",sent:"Thank you! We’ll reply with a clear plan.",subj:"Request from the Multikost website",bl:["Name: ","Email: ","Organisation: ","Service: "],wa:"Hello Multikost, I’d like to know more about: "},
+urg:"Limited onboarding slots this month",lite:"Lite mode",full:"Full experience",load:"Load full experience"},
+foot:"We trend the impossible."};
+var FR={title:"Multikost — Nous faisons de l’impossible une tendance",nav:["Services","Essayer","FAQ","S’abonner"],theme:"Changer de thème clair ou sombre",top:"Retour en haut",off:"Vous êtes hors ligne. Cette page fonctionne toujours.",
+tag:"Solutions informatiques pour ONG, entreprises et écoles",h1:["Nous faisons de l’","impossible"," une tendance."],lead:"Support informatique, formation, applications sur mesure, marketing et matériel, conçus pour fonctionner partout, même avec une connexion faible.",b1:"Découvrir les services",b2:"Essayer une démo",fb:["Fonctionne hors ligne","Conçu pour l’impact","5 services"],
+tick:["Word","Excel","PowerPoint","Applis Android","Applis web","Bases de données","Wi-Fi","Solaire & onduleurs","Réseaux sociaux","Ordinateurs","Imprimantes","Formation"],
+sv:{h:"Ce que nous faisons",all:"Tous les services",s1:"Cinq services sous un même toit. Touchez-en un pour vous concentrer dessus.",s2:"Un seul service affiché. Changez avec les boutons ou revenez à la vue complète.",open:"Ouvrir ce service ▸",ex:"Le déroulement d’un projet",next:"Suivant : ",back:"← Tous les services",upd:"Recevoir les nouveautés",chip:"Choisir un service"},
+S:{it:{tag:"Dépanner",t:"Support & infrastructure informatique",d:"Nous gardons vos ordinateurs, votre réseau et votre alimentation de secours en marche pour que le travail ne s’arrête jamais.",l:["Installation du réseau et du Wi-Fi","Réparations et plans de maintenance","Sauvegardes qui fonctionnent sans internet","Conseils solaire et onduleurs"],s:["Visite sur place et inventaire du matériel","Réparer, sécuriser et étiqueter","Contrôles réguliers pour éviter les gros problèmes"]},
+tr:{tag:"Apprendre",t:"Formations et cours d’informatique",d:"Des leçons pratiques pour le personnel, les élèves et les débutants, dans une langue que vous comprenez.",l:["Outils bureautiques : Word, Excel, PowerPoint","Informatique de base pour débutants","Formation d’équipes pour écoles et ONG","Certificat à la fin"],s:["Évaluer ce que vos équipes savent déjà","Séances pratiques sur des tâches réelles","Test final, puis certificat"]},
+dev:{tag:"Créer",t:"Développement d’applications sur mesure",d:"Applications de base de données, mobiles, web et bureau, conçues autour de votre façon de travailler et capables de fonctionner hors ligne.",l:["Systèmes de bases de données","Applis Android et web","Logiciels de bureau","Hors ligne d’abord, synchronisation ensuite"],s:["Comprendre comment votre équipe travaille","Prototype rapide testé avec votre personnel","Lancement, formation et suivi"]},
+mk:{tag:"Développer",t:"Marketing digital & croissance",d:"Soyez trouvé par les personnes que vous voulez atteindre, grâce à un marketing en ligne simple et honnête.",l:["Pages et contenus pour les réseaux sociaux","Affiches et identité visuelle","Pages et fiches d’entreprise","Campagnes légères en données"],s:["Définir qui vous voulez atteindre","Créer pages, affiches et contenus","Mesurer ce qui marche, améliorer chaque mois"]},
+st:{tag:"Acheter",t:"Boutique d’ordinateurs & accessoires",d:"Des ordinateurs et accessoires fiables, avec des conseils sur ce dont vous avez réellement besoin.",l:["Ordinateurs portables et de bureau","Imprimantes, câbles et stockage","Routeurs et matériel réseau","Garantie et service après-vente"],s:["Dites-nous votre budget et votre usage","Nous proposons des options comparables","Livraison, installation et garantie"]}},
+band:"Notre mission est de donner aux ONG, aux entreprises, aux écoles et à bien d’autres des outils avancés qui améliorent leur travail au quotidien. C’est pour eux que nous créons une technologie qui résiste aux conditions réelles.",bandA:"Illustration d’une école, d’une boutique et d’un bureau au bord de l’eau",
+why:{h:"Pourquoi Multikost",s:"Quatre habitudes pour que chaque outil que nous créons serve vraiment au travail quotidien de ceux qui l’utilisent.",i:[["Hors ligne d’abord","Les applications continuent de fonctionner sans réseau et se synchronisent ensuite."],["Léger en données","Pages et mises à jour légères, adaptées aux connexions lentes."],["Un soutien humain","De vraies personnes qui répondent, se déplacent et forment, pas un service de tickets."],["Conçu pour durer","Des conceptions simples que votre équipe peut comprendre et entretenir."]]},
+till:{h:"Essayez une caisse hors ligne",s:"Voyez comment nos applications réagissent quand le réseau tombe. Coupez-le, faites quelques ventes, puis rétablissez-le. (Prix fictifs.)",on:"Réseau : en ligne",offl:"Réseau : hors ligne",items:["Pain","Thé","Gâteau"],tot:"Total : ",wait:" en attente de synchronisation",ok:"Tout est enregistré",clr:"Effacer",log:"Journal des ventes",none:"Aucune vente pour l’instant. Touchez un article.",sy:"Synchronisé ✓",dev:"Enregistré sur l’appareil…",tg:"Activer ou couper le réseau"},
+how:{h:"Notre façon de travailler",s:"Simple et honnête, du premier échange jusqu’à bien après le lancement.",st:[["Écouter","Nous partons de votre défi quotidien, pas de notre catalogue."],["Proposer","Un plan et un prix clairs, lisibles sur une page."],["Créer ou réparer","Étape par étape, testé dans votre environnement réel."],["Rester à vos côtés","Formation et suivi, bien après le lancement."]]},
+faq:{h:"Les questions fréquentes",q:[["Vos applications fonctionnent-elles sans internet ?","Oui. Nous les concevons hors ligne d’abord : le travail continue et les données se synchronisent dès qu’une connexion est disponible."],["Pouvez-vous former des personnes qui n’ont jamais utilisé d’ordinateur ?","Oui. Nous partons des bases et nous pratiquons sur des tâches réelles du travail."],["Notre budget est modeste. Pouvons-nous travailler ensemble ?","Oui. Nous proposons généralement une petite première étape, puis nous grandissons avec vos besoins et vos moyens."],["Travaillez-vous avec des organisations d’autres pays ?","C’est notre direction. Applications, formation et marketing peuvent se faire à distance, alors contactez-nous."]]},
+sub:{h:"Restez informé",p:"Nouveaux outils, formations et offres, directement dans votre boîte mail. Pas de spam, désabonnement à tout moment.",ph:"vous@exemple.com",lbl:"Adresse e-mail",b:"S’abonner",bad:"Cette adresse e-mail semble incorrecte. Veuillez la vérifier.",ok:"Merci ! Vous êtes inscrit. Nous n’écrirons que lorsque nous aurons quelque chose d’utile.",send:"Envoi…"},
+N:{reqSvc:"Demander ce service",mid1:"Prêt à dépanner, apprendre ou créer ? Parlez-nous de votre défi.",mid2:"Prêt à commencer ? Dites-nous ce dont vous avez besoin.",micro:"Décrivez-nous votre défi. Recevez un plan clair sous 48 heures.",alt:"L’équipe Multikost au travail",
+badges:["Première consultation gratuite","Fonctionne hors ligne","Formation incluse"],trustH:"La confiance d’équipes comme la vôtre",proofL:["Projets livrés","Personnes formées","Organisations accompagnées"],logo:"[logo client]",quote:"[témoignage]",quoteBy:"[nom, organisation]",
+help:{h:"Pas sûr par où commencer ?",q:["Qu’est-ce qui vous ralentit le plus ?","Qui êtes-vous ?","Pour quand avez-vous besoin d’aide ?"],o:[["Matériel en panne ou peu fiable","Mon équipe a besoin de compétences informatiques","Il nous faut un système ou une appli sur mesure","Trop peu de gens nous connaissent","Je dois acheter du matériel"],["Une ONG","Une entreprise","Une école","Autre chose"],["Tout de suite","Dans les prochains mois","Je me renseigne"]],res:"Nous vous suggérons : ",re:"Recommencer",step:"Question "},
+req:{h:"Dites-nous ce dont vous avez besoin",p:"Nous répondons avec un plan clair. Sans engagement.",n:"Votre nom",e:"Votre e-mail",o:"Type d’organisation",org:["ONG","Entreprise","École","Autre"],s:"Service",ns:"Pas encore sûr",m:"Votre défi (facultatif)",send:"Envoyer ma demande",bad:"Veuillez saisir votre nom et un e-mail valide.",done:"Ouverture de votre messagerie. Vous pouvez aussi nous écrire sur WhatsApp.",sent:"Merci ! Nous répondrons avec un plan clair.",subj:"Demande depuis le site Multikost",bl:["Nom : ","E-mail : ","Organisation : ","Service : "],wa:"Bonjour Multikost, je voudrais en savoir plus sur : "},
+urg:"Places d’accueil limitées ce mois-ci",lite:"Mode léger",full:"Expérience complète",load:"Charger l’expérience complète"},
+foot:"Nous faisons de l’impossible une tendance."};
+var X=L==="fr"?FR:EN;document.title=X.title;
+var ic=function(d,c){return h("svg",{className:c||"","aria-hidden":"true",viewBox:"0 0 24 24"},d.map(function(p,i){return h("path",{key:i,d:p})}))};
+var COL={it:"#d9e6fa",tr:"#e3ecd9",dev:"#e6defa",mk:"#fbe7d3",st:"#d7eef0"};
+var ICONS={it:["M3 5h18v11H3z","M8 21h8M12 16v5"],tr:["M2 9l10-5 10 5-10 5z","M6 11v5c3 2 9 2 12 0v-5"],dev:["M8 7l-5 5 5 5","M16 7l5 5-5 5","M14 4l-4 16"],mk:["M3 17l6-6 4 4 8-8","M15 7h6v6"],st:["M4 7h16l-1.5 12h-13z","M9 7a3 3 0 016 0"]};
+var IDS=["it","tr","dev","mk","st"];
+var WI=[["M5 12a7 7 0 0114 0","M8 15a4 4 0 018 0","M12 19h.01","M3 3l18 18"],["M12 3v18","M5 10l7-7 7 7"],["M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z","M12 10h.01"],["M4 20h16","M7 16V8","M12 16V4","M17 16v-6"]];
+var HERO='<rect width="480" height="330" fill="#e8eff9"/><circle cx="240" cy="170" r="150" fill="#d4e2f7"/><rect x="110" y="80" width="260" height="170" rx="12" fill="#14305e"/><rect x="122" y="92" width="236" height="146" rx="6" fill="#fff"/><rect x="134" y="106" width="90" height="10" rx="5" fill="#14305e"/><rect x="134" y="126" width="150" height="6" rx="3" fill="#c5d3ea"/><rect x="134" y="140" width="120" height="6" rx="3" fill="#c5d3ea"/><rect x="134" y="166" width="40" height="56" rx="4" fill="#9fc0f5"/><rect x="182" y="186" width="40" height="36" rx="4" fill="#14305e"/><rect x="230" y="176" width="40" height="46" rx="4" fill="#9fc0f5"/><path d="M80 252h320l-24 22H104z" fill="#2b2f38"/><rect x="330" y="140" width="90" height="150" rx="14" fill="#2b2f38"/><rect x="338" y="152" width="74" height="126" rx="8" fill="#fff"/><circle cx="375" cy="180" r="14" fill="#14305e"/><rect x="348" y="204" width="54" height="6" rx="3" fill="#c5d3ea"/><rect x="348" y="218" width="40" height="6" rx="3" fill="#c5d3ea"/><rect x="348" y="242" width="54" height="18" rx="9" fill="#14305e"/><g fill="none" stroke="#14305e" stroke-width="5" stroke-linecap="round"><path d="M70 80a40 40 0 0160 0"/><path d="M82 94a24 24 0 0136 0"/></g><circle cx="100" cy="108" r="5" fill="#14305e"/>';
+var BAND='<rect width="960" height="220" fill="#e8eff9"/><circle cx="800" cy="60" r="28" fill="#fff"/><path d="M0 140Q120 70 240 130T480 120T720 125T960 100V220H0z" fill="#c5d3ea"/><path d="M0 170Q200 130 400 165T800 160T960 150V220H0z" fill="#9fc0f5"/><rect y="185" width="960" height="35" fill="#14305e" opacity=".85"/><g fill="#fff" stroke="#14305e" stroke-width="3"><rect x="120" y="120" width="110" height="65"/><rect x="420" y="105" width="90" height="80"/><rect x="700" y="125" width="120" height="60"/></g><g fill="#14305e"><path d="M110 120l65-34 65 34z"/><path d="M410 105l55-30 55 30z"/><path d="M690 125l70-32 70 32z"/><rect x="165" y="150" width="20" height="35"/><rect x="455" y="140" width="20" height="45"/><rect x="750" y="150" width="20" height="35"/></g>';
+
+function Rv(p){var r=useRef(null);useEffect(function(){var e=r.current;if(!e)return;if(!("IntersectionObserver"in window)){e.classList.add("in");return}
+var o=new IntersectionObserver(function(x){if(x[0].isIntersecting){e.classList.add("in");o.disconnect()}},{threshold:.1});o.observe(e);return function(){o.disconnect()}},[]);
+return h("div",{ref:r,className:"rv "+(p.className||"")},p.children)}
+function Ticker(){return h("div",{className:"tick","aria-hidden":"true"},h("div",{className:"tk"},X.tick.concat(X.tick).map(function(x,i){return h("span",{key:i},x)})))}
+
+function Services(){var _=useState(null),sel=_[0],setSel=_[1],V=X.sv;
+var ix=sel?IDS.indexOf(sel):0,nx=IDS[(ix+1)%IDS.length],s=sel?X.S[sel]:null;
+function pick(id){setSel(id);var e=document.getElementById("services");if(e&&e.scrollIntoView)e.scrollIntoView({behavior:"smooth"})}
+return h("section",{id:"services"},h("div",{className:"wrap"},
+h(Rv,null,h("h2",null,V.h),h("p",{className:"sub"},s?V.s2:V.s1)),
+h("div",{className:"chips",role:"group","aria-label":V.chip},[null].concat(IDS).map(function(id){return h("button",{key:id||"all",className:"chip","aria-pressed":sel===id,onClick:function(){setSel(id)}},id?X.S[id].tag:V.all)})),
+s?h("div",{className:"detail",key:sel},h("div",{className:"tile",style:{background:COL[sel]}},ic(ICONS[sel])),
+h("div",null,h("h3",{style:{margin:0,fontSize:24}},s.t),h("p",{className:"sub",style:{margin:"6px 0 0"}},s.d),
+h("ul",{className:"ck"},s.l.map(function(x){return h("li",{key:x},x)})),
+h("strong",null,V.ex),h("ol",{className:"tl"},s.s.map(function(x){return h("li",{key:x},x)})),
+h("div",{className:"mini"},h("button",{className:"btn",onClick:function(){API.go(sel)}},X.N.reqSvc),h("a",{href:"#subscribe",className:"btn ghost"},V.upd),h("button",{className:"btn ghost",onClick:function(){pick(nx)}},V.next+X.S[nx].tag+" →"),h("button",{className:"btn ghost",onClick:function(){setSel(null)}},V.back))))
+:h("div",{className:"grid"},IDS.map(function(id){var x=X.S[id];return h("button",{key:id,className:"card",onClick:function(){pick(id)}},h("div",{className:"tile",style:{background:COL[id]}},h(Pic,{src:CFG.photos.svc[id],data:CFG.data.svc[id],alt:x.t,fb:ic(ICONS[id])})),h("h3",null,x.t),h("p",null,x.d),h("span",{className:"hint"},V.open))}))))}
+
+function Band(){return h("section",{className:"band"},h("div",{className:"wrap"},h(Rv,null,h("svg",{className:"art",viewBox:"0 0 960 220",preserveAspectRatio:"xMidYMid slice",role:"img","aria-label":X.bandA,dangerouslySetInnerHTML:{__html:BAND}}),h("p",null,X.band))))}
+function Why(){var W=X.why;return h("section",null,h("div",{className:"wrap"},h(Rv,null,h("h2",null,W.h),h("p",{className:"sub"},W.s)),h("div",{className:"why"},W.i.map(function(w,i){return h(Rv,{key:i,className:"pane"},ic(WI[i]),h("h3",null,w[0]),h("p",null,w[1]))}))))}
+
+function Till(){var T=X.till,_=useState(true),on=_[0],setOn=_[1],_l=useState([]),lg=_l[0],setLg=_l[1],P=[1,2,5];
+useEffect(function(){if(!on||!lg.some(function(x){return x.s===1}))return;var t=setTimeout(function(){setLg(function(a){return a.map(function(x){return{n:x.n,p:x.p,s:2,k:x.k}})})},1000);return function(){clearTimeout(t)}},[on,lg]);
+function add(i){setLg(function(a){return[{n:T.items[i],p:P[i],s:on?2:1,k:Math.random()}].concat(a).slice(0,30)})}
+var tot=lg.reduce(function(a,x){return a+x.p},0),pend=lg.filter(function(x){return x.s===1}).length;
+return h("section",{id:"try",className:"alt"},h("div",{className:"wrap"},h(Rv,null,h("h2",null,T.h),h("p",{className:"sub"},T.s)),
+h("div",{className:"till"},h("div",{className:"pane"},h("div",{className:"sw"},h("button",{className:on?"on":"","aria-pressed":on,"aria-label":T.tg,onClick:function(){setOn(!on)}}),h("span",null,on?T.on:T.offl)),
+h("div",{className:"items"},T.items.map(function(n,i){return h("button",{key:n,onClick:function(){add(i)}},"+ "+n+" ("+P[i]+")")})),
+h("strong",null,T.tot+tot),h("div",{style:{color:"var(--mute)",fontSize:14}},pend?pend+T.wait:T.ok),
+h("button",{className:"btn ghost",style:{marginTop:12},onClick:function(){setLg([])}},T.clr)),
+h("div",{className:"pane"},h("strong",null,T.log),h("ul",{className:"lg"},lg.length?lg.map(function(x){return h("li",{key:x.k},h("span",null,x.n+" · "+x.p),h("span",{className:x.s===2?"st2":"st1"},x.s===2?T.sy:T.dev))}):h("li",null,T.none))))))}
+
+function Faq(){return h("section",{id:"faq",className:"faq"},h("div",{className:"wrap"},h(Rv,null,h("h2",null,X.faq.h)),X.faq.q.map(function(q){return h("details",{key:q[0]},h("summary",null,q[0]),h("p",null,q[1]))})))}
+
+function Subscribe(){var U=X.sub,_=useState(""),em=_[0],setEm=_[1],_2=useState(""),st=_2[0],setSt=_2[1];
+function go(e){e.preventDefault();var v=em.trim();
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){setSt(U.bad);return}
+function ok(){setSt(U.ok);setEm("")}
+function save(){try{var a=JSON.parse(localStorage.getItem("mk_subs")||"[]");a.push({email:v,lang:L,at:new Date().toISOString()});localStorage.setItem("mk_subs",JSON.stringify(a))}catch(x){}ok()}
+if(CFG.subscribe){setSt(U.send);fetch(CFG.subscribe,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:v,lang:L})}).then(function(r){r.ok?ok():save()}).catch(save)}else save()}
+return h("section",{id:"subscribe"},h("div",{className:"wrap"},h(Rv,{className:"sbox"},h("h2",null,U.h),h("p",null,U.p),
+h("form",{onSubmit:go,noValidate:true},h("input",{type:"email",placeholder:U.ph,"aria-label":U.lbl,value:em,onChange:function(e){setEm(e.target.value)}}),h("button",{type:"submit"},U.b)),
+h("div",{className:"msg","aria-live":"polite"},st))))}
+
+X.cta=CFG.cta[L];
+var API={go:function(){}};
+var Net=React.createContext({rich:false,saveData:false});
+var okU=function(u){return!!u&&!/REPLACE/.test(u)};
+/* Network class: lean = 2g/3g, saveData, reduced-data, high latency, offline or slow first load. Never blocks rendering. */
+function classify(){try{if(navigator.onLine===false)return"lean";if(window.matchMedia&&matchMedia("(prefers-reduced-data: reduce)").matches)return"lean";
+var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+if(c){if(c.saveData)return"lean";if(/^(slow-2g|2g|3g)$/.test(c.effectiveType||""))return"lean";if(c.downlink&&c.downlink<CFG.net.minDownlink)return"lean";if(c.rtt&&c.rtt>CFG.net.maxRtt)return"lean";return"rich"}
+var n=performance.getEntriesByType("navigation")[0];if(n&&n.duration>CFG.net.slowLoadMs)return"lean"}catch(e){}return"rich"}
+/* Remote or embedded photo with fade-in, 6 s timeout, and the SVG fallback if anything fails */
+function Pic(p){var net=React.useContext(Net),src=CFG.HOSTED&&net.rich&&okU(p.src)?p.src:(p.data||""),_=useState(0),st=_[0],setSt=_[1];
+useEffect(function(){setSt(0);if(!src)return;var t=setTimeout(function(){setSt(function(s){return s===1?s:2})},6000);return function(){clearTimeout(t)}},[src]);
+if(!src||st===2)return p.fb;
+return h("div",{className:"pic",style:p.ar?{aspectRatio:p.ar}:null},st===1?null:p.fb,h("img",{src:src,alt:p.alt||"",loading:"lazy",decoding:"async",className:st===1?"on":"",onLoad:function(){setSt(1)},onError:function(){setSt(2)}}))}
+function Count(p){var r=useRef(null),net=React.useContext(Net),_=useState(net.rich?0:p.v),n=_[0],setN=_[1];
+useEffect(function(){var e=r.current;if(!net.rich||!("IntersectionObserver"in window)){setN(p.v);return}
+var o=new IntersectionObserver(function(x){if(x[0].isIntersecting){o.disconnect();var t0=performance.now(),f=function(t){var k=Math.min(1,(t-t0)/1200);setN(Math.round(p.v*k));if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}});o.observe(e);return function(){o.disconnect()}},[net.rich,p.v]);
+return h("span",{ref:r},n)}
+function Trust(){var N=X.N;return h("section",{className:"trust"},h("div",{className:"wrap"},h(Rv,null,h("div",{className:"badges"},N.badges.map(function(b){return h("span",{key:b,className:"bd"},"✓ "+b)})),
+h("h2",{style:{fontSize:24}},N.trustH),
+h("div",{className:"proof"},CFG.proof.map(function(p,i){return h("div",{key:i,className:"pane pf"},p.n!=null?h("strong",{className:"num"},h(Count,{v:p.n}),p.plus?"+":""):h("strong",{className:"num ph"},"[ # ]"),h("span",null,N.proofL[i]))})),
+h("div",{className:"logos"},[1,2,3,4].map(function(i){return h("div",{key:i,className:"lgo"},N.logo)})))))}
+function CtaRow(p){return h("section",{className:"cta"},h("div",{className:"wrap ctar"},h("p",null,p.t),h("button",{className:"btn",onClick:function(){API.go()}},X.cta)))}
+function Quote(){var N=X.N;return h("section",{className:"alt"},h("div",{className:"wrap"},h(Rv,{className:"quote"},h("p",null,"“"+N.quote+"”"),h("span",null,N.quoteBy))))}
+function Helper(){var H=X.N.help,_=useState([]),a=_[0],setA=_[1],i=a.length;
+function pick(k){setA(a.concat([k]))}
+function rec(){var s={it:0,tr:0,dev:0,mk:0,st:0};s[IDS[a[0]]]+=2;s[["dev","mk","tr","it"][a[1]]]+=1;s[["it","dev","tr"][a[2]]]+=1;return IDS.slice().sort(function(x,y){return s[y]-s[x]})[0]}
+var r=i>=3?rec():null;
+return h("section",{id:"help",className:"alt"},h("div",{className:"wrap"},h(Rv,null,h("h2",null,H.h)),
+h("div",{className:"pane hq"},r?h("div",null,h("h3",{style:{margin:"0 0 12px"}},H.res+X.S[r].t),h("p",{className:"sub",style:{margin:"0 0 16px"}},X.S[r].d),h("div",{className:"mini"},h("button",{className:"btn",onClick:function(){API.go(r)}},X.N.reqSvc),h("button",{className:"btn ghost",onClick:function(){setA([])}},H.re)))
+:h("div",null,h("strong",null,H.step+(i+1)+"/3: "+H.q[i]),h("div",{className:"chips",style:{marginTop:12},role:"group"},H.o[i].map(function(o,k){return h("button",{key:o,className:"chip",onClick:function(){pick(k)}},o)}))))))}
+function Request(p){var R=X.N.req,_=useState({n:"",e:"",o:0,s:"",m:""}),f=_[0],setF=_[1],_s=useState(""),msg=_s[0],setMsg=_s[1];
+useEffect(function(){setF(function(x){return Object.assign({},x,{s:p.svc||""})})},[p.svc,p.tick]);
+function set(k,v){setF(function(x){var y=Object.assign({},x);y[k]=v;return y})}
+var sv=f.s?X.S[f.s].t:R.ns;
+function go(e){e.preventDefault();if(!f.n.trim()||!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.e.trim())){setMsg(R.bad);return}
+var body=R.bl[0]+f.n+"\n"+R.bl[1]+f.e+"\n"+R.bl[2]+R.org[f.o]+"\n"+R.bl[3]+sv+"\n\n"+f.m,mail="mailto:"+CFG.email+"?subject="+encodeURIComponent(R.subj)+"&body="+encodeURIComponent(body);
+function fall(){setMsg(R.done);window.location.href=mail}
+if(CFG.endpoint){fetch(CFG.endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:f.n,email:f.e,org:R.org[f.o],service:f.s,message:f.m,lang:L})}).then(function(r){r.ok?setMsg(R.sent):fall()}).catch(fall)}else fall()}
+return h("section",{id:"request"},h("div",{className:"wrap"},h(Rv,{className:"rbox"},h("h2",null,R.h),h("p",{className:"sub"},R.p),CFG.urgency.on&&h("p",{className:"urg"},X.N.urg),
+h("form",{onSubmit:go,noValidate:true,className:"rf"},
+h("label",null,R.n,h("input",{value:f.n,autoComplete:"name",onChange:function(e){set("n",e.target.value)}})),
+h("label",null,R.e,h("input",{type:"email",value:f.e,autoComplete:"email",onChange:function(e){set("e",e.target.value)}})),
+h("label",null,R.o,h("select",{value:f.o,onChange:function(e){set("o",+e.target.value)}},R.org.map(function(o,i){return h("option",{key:o,value:i},o)}))),
+h("label",null,R.s,h("select",{value:f.s,onChange:function(e){set("s",e.target.value)}},[h("option",{key:"x",value:""},R.ns)].concat(IDS.map(function(id){return h("option",{key:id,value:id},X.S[id].t)})))),
+h("label",{className:"full"},R.m,h("textarea",{rows:3,value:f.m,onChange:function(e){set("m",e.target.value)}})),
+h("div",{className:"full mini"},h("button",{type:"submit",className:"btn"},R.send),h("a",{className:"btn ghost",href:"https://wa.me/"+CFG.wa+"?text="+encodeURIComponent(R.wa+(f.s?sv:"")),target:"_blank",rel:"noopener"},"WhatsApp")),
+h("div",{className:"msg full","aria-live":"polite"},msg)))))}
+function App(){var _p=useState(0),pg=_p[0],setPg=_p[1],_t=useState(function(){try{return localStorage.getItem("mk_theme")||""}catch(e){return""}}),th=_t[0],setTh=_t[1],_n=useState(typeof navigator!=="undefined"&&navigator.onLine===false),off=_n[0],setOff=_n[1],_m=useState(classify),mode=_m[0],setMode=_m[1],_f=useState(false),force=_f[0],setForce=_f[1],_v=useState(""),svc=_v[0],setSvc=_v[1],_k=useState(0),tick=_k[0],setTick=_k[1];
+var calm=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches),sd=!!(navigator.connection&&navigator.connection.saveData),rich=!off&&(mode==="rich"||force),rr=useRef(rich);rr.current=rich;
+API.go=function(id){setSvc(id||"");setTick(function(t){return t+1});var e=document.getElementById("request");if(e)e.scrollIntoView({behavior:calm?"auto":"smooth"})};
+useEffect(function(){var re=function(){setMode(classify())},f=function(){var d=document.documentElement;setPg(Math.min(100,Math.round(100*d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight))));if(rr.current)d.style.setProperty("--sy",d.scrollTop+"px")},a=function(){setOff(false);re()},b=function(){setOff(true);re()},c=navigator.connection;
+window.addEventListener("scroll",f,{passive:true});window.addEventListener("online",a);window.addEventListener("offline",b);if(c&&c.addEventListener)c.addEventListener("change",re);
+return function(){window.removeEventListener("scroll",f);window.removeEventListener("online",a);window.removeEventListener("offline",b);if(c&&c.removeEventListener)c.removeEventListener("change",re)}},[]);
+useEffect(function(){if(th)document.documentElement.setAttribute("data-theme",th);else document.documentElement.removeAttribute("data-theme");try{th?localStorage.setItem("mk_theme",th):localStorage.removeItem("mk_theme")}catch(e){}},[th]);
+/* Web font only on a rich connection; swap avoids layout jump; system stack stays as fallback */
+useEffect(function(){document.documentElement.classList.toggle("rich",rich);if(!rich||document.getElementById("mk-fonts"))return;var l=document.createElement("link");l.id="mk-fonts";l.rel="stylesheet";l.href=CFG.fonts;l.onload=function(){document.documentElement.classList.add("jf")};document.head.appendChild(l)},[rich]);
+var N=X.nav,vid=rich&&CFG.HOSTED&&okU(CFG.video)&&!sd,heroSvg=h("svg",{className:"art",viewBox:"0 0 480 330",role:"img","aria-label":"Multikost",dangerouslySetInnerHTML:{__html:HERO}});
+return h(Net.Provider,{value:{rich:rich,saveData:sd}},h(React.Fragment,null,
+h("header",null,h("div",{className:"wrap bar"},h("a",{href:"#top",className:"logo"},"Multi",h("b",null,"kost")),h("nav",null,h("a",{href:"#services",className:"hide"},N[0]),h("a",{href:"#try",className:"hide"},N[1]),h("a",{href:"#faq",className:"hide"},N[2]),h("a",{href:"#subscribe",className:"hide"},N[3]),h("button",{className:"btn hc",onClick:function(){API.go()}},X.cta),h("button",{className:"ib",onClick:function(){setTh(th==="dark"?"":"dark")},"aria-label":X.theme},"◐")))),
+h("main",{id:"top"},
+h("div",{className:"herow"},h("div",{className:"wrap hero"},h("div",null,CFG.urgency.on&&h("p",{className:"urg"},X.N.urg),h("span",{className:"tag"},X.tag),h("h1",null,X.h1[0],h("em",null,X.h1[1]),X.h1[2]),h("p",{className:"lead"},X.lead),
+h("div",{className:"row"},h("button",{className:"btn",onClick:function(){API.go()}},X.cta),h("a",{href:"#try",className:"btn ghost"},X.b2)),h("p",{className:"micro"},X.N.micro)),
+h("div",{className:"hw"},vid?h("video",{src:CFG.video,poster:okU(CFG.photos.hero)?CFG.photos.hero:undefined,muted:true,loop:true,autoPlay:true,playsInline:true,"aria-hidden":"true"}):h(Pic,{src:CFG.photos.hero,data:CFG.data.hero,ar:"480/330",alt:X.N.alt,fb:heroSvg}),h("span",{className:"fb f1"},X.fb[0]),h("span",{className:"fb f2"},X.fb[1]),h("span",{className:"fb f3"},X.fb[2])))),
+h(Ticker),h(Trust),h(Services),h(CtaRow,{t:X.N.mid1}),h(Band),h(Why),h(Helper),h(Till),
+h("section",{id:"how"},h("div",{className:"wrap"},h(Rv,null,h("h2",null,X.how.h),h("p",{className:"sub"},X.how.s)),h("div",{className:"steps"},X.how.st.map(function(s){return h(Rv,{key:s[0],className:"step"},h("h3",null,s[0]),h("p",null,s[1]))})))),
+h(CtaRow,{t:X.N.mid2}),h(Quote),h(Faq),h(Request,{svc:svc,tick:tick}),h(Subscribe)),
+h("footer",null,h("div",{className:"wrap foot"},h("span",null,"© "+new Date().getFullYear()+" Multikost · "+X.foot),h("span",null,h("a",{href:"mailto:"+CFG.email},CFG.email)," · ",h("a",{href:"tel:+"+CFG.wa},CFG.waDisplay)),h("button",{className:"btn",onClick:function(){API.go()}},X.cta))),
+h("div",{className:"mb"},h("button",{className:"btn",onClick:function(){API.go()}},X.cta),h("a",{className:"btn ghost",href:"https://wa.me/"+CFG.wa,target:"_blank",rel:"noopener"},"WhatsApp")),
+h("div",{className:"mode",role:"status"},rich?X.N.full:X.N.lite,!rich&&!off&&h("button",{onClick:function(){setForce(true)}},X.N.load)),
+h("div",{className:"prog",style:{width:pg+"%"}}),pg>12&&h("a",{href:"#top",className:"top","aria-label":X.top},"↑"),off&&h("div",{className:"net"},X.off)))}
+ReactDOM.createRoot(document.getElementById("root")).render(h(App));
+})();
+</script>
+</body>
+</html>
